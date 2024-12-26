@@ -1,3 +1,6 @@
+// Exporta las rutas de usuarios
+//docuflux/backend/src/routes/userRoutes.js
+
 const express = require('express');
 const userController = require('../controllers/userController');
 const auth = require('../middleware/auth');

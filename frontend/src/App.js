@@ -8,6 +8,7 @@ import AdminLayout from './components/layouts/AdminLayout';
 import UserList from './pages/users/UserList';
 import CompanyList from './pages/companies/CompanyList';
 import ProviderList from './pages/providers/ProviderList';
+import PaymentCalendarList from './pages/payment-calendars/PaymentCalendarList';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="users" element={<UserList />} />
             <Route path="companies" element={<CompanyList />} />
             <Route path="providers" element={<ProviderList />} />
+            <Route path="payment-calendars" element={<PaymentCalendarList />} />
           </Route>
 
           <Route 

@@ -1,3 +1,6 @@
+// Description: Main server file. It starts the server and connects to the database.
+//backend/src/server.js
+
 const express = require('express');
 const cors = require('cors');
 const { sequelize } = require('./models');
@@ -7,6 +10,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/userRoutes');
 const companyRoutes = require('./routes/companyRoutes');
 const providerRoutes = require('./routes/providerRoutes');
+const paymentCalendarRoutes = require('./routes/paymentCalendarRoutes');
 
 const app = express();
 
@@ -19,6 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/providers', providerRoutes);
+app.use('/api/payment-calendars', paymentCalendarRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -4,12 +4,15 @@ import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { logout } from '../../store/authSlice';
 import { 
     LogOut, 
-    Menu as MenuIcon,
-    Users,
-    Building2,
-    Truck,
-    LayoutDashboard,
-    Settings // Añadimos el ícono de Settings
+    MenuIcon, 
+    Users, 
+    Building2, 
+    Truck, 
+    Calendar,
+    LayoutDashboard, 
+    Settings, 
+    ChevronDown, 
+    ChevronRight 
 } from 'lucide-react';
 
 const AdminLayout = () => {
@@ -49,6 +52,11 @@ const AdminLayout = () => {
                     title: 'Proveedores',
                     icon: <Truck className="w-5 h-5" />,
                     path: '/dashboard/providers'
+                },
+                {
+                    title: 'Calendarios de Pago',
+                    icon: <Calendar className="w-5 h-5" />,
+                    path: '/dashboard/payment-calendars'
                 }
             ]
         }

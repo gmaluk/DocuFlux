@@ -1,31 +1,23 @@
 'use strict';
-
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Company extends Model {
     static associate(models) {
-      // Solo definir las asociaciones si los modelos existen
-      if (models.Provider) {
-        Company.hasMany(models.Provider, {
-          foreignKey: 'company_id',
-          as: 'providers'
-        });
-      }
+      Company.hasMany(models.Provider, {
+        foreignKey: 'company_id',
+        as: 'providers'
+      });
 
-      if (models.Document) {
-        Company.hasMany(models.Document, {
-          foreignKey: 'company_id',
-          as: 'documents'
-        });
-      }
+      Company.hasMany(models.Document, {
+        foreignKey: 'company_id',
+        as: 'documents'
+      });
 
-      if (models.PaymentFlow) {
-        Company.hasMany(models.PaymentFlow, {
-          foreignKey: 'company_id',
-          as: 'payment_flows'
-        });
-      }
+      Company.belongsTo(models.PaymentCalendar, {
+        foreignKey: 'payment_calendar_id',
+        as: 'payment_calendar'
+      });
     }
   }
 
@@ -67,14 +59,21 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       }
+    },
+    payment_calendar_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'payment_calendars',
+        key: 'id'
+      }
     }
   }, {
     sequelize,
     modelName: 'Company',
     tableName: 'companies',
     schema: 'private',
-    underscored: true,
-    timestamps: true
+    underscored: true
   });
 
   return Company;

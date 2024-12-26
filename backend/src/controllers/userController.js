@@ -1,3 +1,7 @@
+// Desc: Controladores para la gestión de usuarios
+//docuflux/backend/src/controllers/userController.js
+
+
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 
